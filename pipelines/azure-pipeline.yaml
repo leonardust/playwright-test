@@ -16,7 +16,7 @@ jobs:
                 targetType: 'inline'
                 failOnStderr: true
                 env:
-                  CI: true
+                CI: true
                 script: |
                   npm ci
                   npm run tests:e2e
