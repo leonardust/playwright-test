@@ -1,0 +1,15 @@
+# node
+/node_modules/
+package-lock.json
+
+# ide
+.vscode
+
+# jenkins
+jenkins**
+
+# test outputs
+test-result.json
+/playwright-report/
+/test-results/
+tests/visual/**snapshots

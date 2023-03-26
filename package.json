@@ -1,0 +1,30 @@
+{
+  "name": "udemy-playwright",
+  "version": "1.0.0",
+  "description": "Automated software testing with Playwright",
+  "main": "index.js",
+  "scripts": {
+    "tests:chrome": "playwright test --config=config/playwright.config.ts --project=Chromium",
+    "tests:firefox": "playwright test --config=config/playwright.config.ts --project=Firefox",
+    "tests:webkit": "playwright test --config=config/playwright.config.ts --project=Webkit",
+    "tests:e2e": "playwright test --config=config/e2e.config.ts --project=Chromium",
+    "tests:visual": "playwright test --config=config/visual.config.ts",
+    "tests:visual:chrome": "playwright test --config=config/visual.config.ts --project=Chromium ",
+    "tests:visual:firefox": "playwright test --config=config/visual.config.ts --project=Firefox ",
+    "tests:visual:webkit": "playwright test --config=config/visual.config.ts --project=Webkit ",
+    "tests:visual:update": "playwright test --config=config/visual.config.ts --update-snapshots",
+    "tests:visual:chrome:update": "playwright test --config=config/visual.config.ts --project=Chromium --update-snapshots",
+    "tests:visual:firefox:update": "playwright test --config=config/visual.config.ts --project=Firefox --update-snapshots",
+    "tests:visual:webkit:update": "playwright test --config=config/visual.config.ts --project=Webkit --update-snapshots",
+    "tests:api": "playwright test --config=config/api.config.ts --project=Chromium --reporter=list",
+    "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java"
+  },
+  "author": "Łukasz Komorowski",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^2.8.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.32.1"
+  }
+}
