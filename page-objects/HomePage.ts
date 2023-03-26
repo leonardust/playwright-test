@@ -12,4 +12,15 @@ export class HomePage {
       '[data-test="product_sort_container"]'
     )
   }
+
+  async filterProductsBy(option: string) {
+    await this.productSortContainer.selectOption(option)
+  }
+
+  async actualOrderByProduct(option: string) {
+    const productsOrder = await this.page
+      .locator(`.inventory_item_${option}`)
+      .allTextContents()
+    return productsOrder
+  }
 }
