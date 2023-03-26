@@ -13,3 +13,4 @@ test-result.json
 /playwright-report/
 /test-results/
 tests/visual/**snapshots
+/junit-results/
