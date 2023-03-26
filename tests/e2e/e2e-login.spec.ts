@@ -3,7 +3,7 @@ import { LoginPage } from '../../page-objects/LoginPage'
 import { HomePage } from '../../page-objects/HomePage'
 import { Navbar } from '../../page-objects/components/Navbar'
 
-test.describe('Login / Logout Flow', () => {
+test.describe.parallel('Login / Logout Flow', () => {
   let homePage: HomePage
   let loginPage: LoginPage
   let navbar: Navbar

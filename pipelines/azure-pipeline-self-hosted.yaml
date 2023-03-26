@@ -1,0 +1,32 @@
+jobs:
+  - deployment: Run_E2E_Tests
+    pool:
+      name: localAgent
+    container: mcr.microsoft.com/playwright:v1.32.0-focal
+    environment: testing
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+            - task: Bash@3
+              displayName: 'Run Playwright tests'
+              inputs:
+                workingDirectory: 'my-e2e-tests'
+                targetType: 'inline'
+                failOnStderr: true
+                env:
+                CI: true
+                script: |
+                  npm ci
+                  npm run tests:e2e
+            - task: PublishTestResults@2
+              displayName: 'Publish test results'
+              inputs:
+                searchFolder: 'junit-results/'
+                testResultsFormat: 'JUnit'
+                testResultsFiles: 'e2e-test-results'
+                mergeTestResults: true
+                failTaskOnFailedTests: true
+                testRunTitle: 'My End-To-End Tests'
+              condition: succeededOrFailed()
