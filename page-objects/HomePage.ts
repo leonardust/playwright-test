@@ -23,4 +23,19 @@ export class HomePage {
       .allTextContents()
     return productsOrder
   }
+
+  async addProductToCart(productName: string) {
+    let productLocator = productName.replace(/\s+/g, '-').toLowerCase()
+    await this.page.locator(`#add-to-cart-${productLocator}`).click()
+  }
+
+  async removeProductFromCart(productName: string) {
+    let productLocator = productName.replace(/\s+/g, '-').toLowerCase()
+    await this.page.locator(`#remove-${productLocator}`).click()
+  }
+
+  async removeButtonForProductExist(productName: string) {
+    let productLocator = productName.replace(/\s+/g, '-').toLowerCase()
+    await this.page.waitForSelector(`#remove-${productLocator}`)
+  }
 }
