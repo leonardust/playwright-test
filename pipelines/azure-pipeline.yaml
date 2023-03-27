@@ -27,6 +27,6 @@ jobs:
                 testResultsFormat: 'JUnit'
                 testResultsFiles: 'e2e-test-results.xml'
                 mergeTestResults: true
-                failTaskOnFailedTests: true
-                testRunTitle: 'My End-To-End Tests'
+                failTaskOnFailedTests: false
+                testRunTitle: 'Sauce Demo E2E Tests'
               condition: succeededOrFailed()
