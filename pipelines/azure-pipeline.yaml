@@ -18,7 +18,7 @@ jobs:
                 env:
                 CI: true
                 script: |
-                  npm ci
+                  npm install
                   npm run tests:e2e
             - task: PublishTestResults@2
               displayName: 'Publish test results'
