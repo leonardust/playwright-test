@@ -25,7 +25,7 @@ jobs:
               inputs:
                 searchFolder: 'junit-results/'
                 testResultsFormat: 'JUnit'
-                testResultsFiles: 'e2e-test-results'
+                testResultsFiles: 'e2e-test-results.xml'
                 mergeTestResults: true
                 failTaskOnFailedTests: true
                 testRunTitle: 'My End-To-End Tests'
