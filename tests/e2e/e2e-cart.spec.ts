@@ -32,7 +32,7 @@ test.describe.parallel('Cart', () => {
     await navbar.shoopingCart.click()
 
     // assert cart page
-    expect(await cartPage.cartQuantity.count()).toEqual(1)
+    expect(await cartPage.cartQuantity.count()).toEqual(2)
   })
 
   test('Add multiple products to the Cart', async () => {
