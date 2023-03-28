@@ -30,6 +30,3 @@ jobs:
                 failTaskOnFailedTests: false
                 testRunTitle: 'Sauce Demo E2E Tests'
               condition: succeededOrFailed()
-            - task: PublishHtmlReport@3
-              inputs:
-                reportDir: 'playwright-report'
