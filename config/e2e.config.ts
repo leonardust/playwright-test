@@ -28,7 +28,7 @@ const config: PlaywrightTestConfig = {
     },
   ],
   reporter: [
-    ['junit', { outputFile: '../junit-results/e2e-test-results.xml-report' }],
+    ['junit', { outputFile: '../junit-results/e2e-test-results.xml' }],
   ],
 }
 
