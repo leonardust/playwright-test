@@ -27,9 +27,7 @@ const config: PlaywrightTestConfig = {
       use: { browserName: 'webkit' },
     },
   ],
-  reporter: [
-    ['junit', { outputFile: '../junit-results/e2e-test-results.xml' }],
-  ],
+  reporter: [['html', { outputFile: 'playwright-report' }]],
 }
 
 export default config

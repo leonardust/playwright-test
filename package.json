@@ -4,6 +4,12 @@
   "description": "Automated software testing with Playwright",
   "main": "index.js",
   "scripts": {
+    "test": "npx playwright test",
+    "report": "npx playwright test --reporter=html && npx playwright show-report",
+    "debug": "npx playwright test --debug",
+    "tests:allure": "npx playwright test --config=config/e2e.config.ts --reporter=line,allure-playwright",
+    "results:allure": "npx allure generate ./allure-results --clean",
+    "report:allure": "npx allure open ./allure-report",
     "tests:chrome": "playwright test --config=config/playwright.config.ts --project=Chromium",
     "tests:firefox": "playwright test --config=config/playwright.config.ts --project=Firefox",
     "tests:webkit": "playwright test --config=config/playwright.config.ts --project=Webkit",
@@ -25,6 +31,8 @@
     "prettier": "^2.8.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.32.1"
+    "@playwright/test": "^1.32.1",
+    "allure-commandline": "^2.20.1",
+    "allure-playwright": "^2.0.0-beta.26"
   }
 }

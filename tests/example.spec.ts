@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { loadHomePage, assertTitle, makeScreenshot } from '../helpers'
+import { loadHomePage, assertTitle, makeScreenshot } from '../utils/helpers'
 
 test('Simple basic test', async ({ page }) => {
   await page.goto('https://www.example.com')
