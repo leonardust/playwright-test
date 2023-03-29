@@ -32,10 +32,8 @@ jobs:
                 targetType: 'inline'
                 script: |
                   apt-get update
-                  apt-get install sudo
-                  sudo apt-add-repository ppa:qameta/allure -y
-                  sudo apt-get update 
-                  sudo apt-get install allure -y
+                  apt-add-repository ppa:qameta/allure -y
+                  apt-get install allure -y
                   allure --version      
             - task: Bash@3
               displayName: 'Run Playwright tests'
