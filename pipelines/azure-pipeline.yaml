@@ -19,7 +19,8 @@ jobs:
                 CI: true
                 script: |
                   npm install
-                  npm run tests:e2e
+                  npm run tests:allure
+                  npm run results:allure
             - task: PublishTestResults@2
               displayName: 'Publish test results'
               inputs:
