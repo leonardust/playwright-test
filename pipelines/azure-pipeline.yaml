@@ -10,6 +10,23 @@ jobs:
           steps:
             - checkout: self
             - task: Bash@3
+              displayName: 'Install dependencies'
+              inputs:
+                workingDirectory: 'tests/e2e'
+                targetType: 'inline'
+                failOnStderr: true
+                env:
+                CI: true
+                script: npm install
+            - task: Bash@3
+              displayName: 'Install Java'
+              inputs:
+                targetType: 'inline'
+                script: |
+                  apt-get update
+                  apt-get install -y default-jdk
+                  export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+            - task: Bash@3
               displayName: 'Run Playwright tests'
               inputs:
                 workingDirectory: 'tests/e2e'
@@ -17,10 +34,16 @@ jobs:
                 failOnStderr: true
                 env:
                 CI: true
-                script: |
-                  npm install
-                  npm run tests:allure
-                  npm run results:allure
+                script: npm run tests:allure 
+            - task: Bash@3
+              displayName: 'Generate Allure report'
+              inputs:
+                workingDirectory: 'tests/e2e'
+                targetType: 'inline'
+                failOnStderr: true
+                env:
+                CI: true
+                script: npm run results:allure           
             - task: PublishTestResults@2
               displayName: 'Publish test results'
               inputs:
