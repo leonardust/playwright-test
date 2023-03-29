@@ -38,7 +38,7 @@ jobs:
             - task: Bash@3
               displayName: 'Generate Allure report'
               inputs:
-                workingDirectory: 'allure/results'
+                workingDirectory: 'allure-results'
                 targetType: 'inline'
                 failOnStderr: true
                 env:
