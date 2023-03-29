@@ -26,8 +26,15 @@ jobs:
                   apt-get update
                   apt-get install -y default-jdk
                   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-            - script: allure --version
-              displayName: 'Print Allure version'      
+            - task: Bash@3
+              displayName: 'Install Allure'
+              inputs:
+                targetType: 'inline'
+                script: |
+                  sudo apt-add-repository ppa:qameta/allure -y
+                  sudo apt-get update 
+                  sudo apt-get install allure -y
+                  allure --version      
             - task: Bash@3
               displayName: 'Run Playwright tests'
               inputs:
@@ -60,3 +67,11 @@ jobs:
               displayName: 'Publish Allure Report'
               inputs:
                 reportDir: 'allure-report'
+            - task: CopyFiles@2
+              displayName: 'Copy Allure report'
+              inputs:
+                SourceFolder: $(Build.Repository.LocalPath)/allure-report/
+                Contents: '**'
+                TargetFolder: $(Build.ArtifactStagingDirectory)/allure-report/
+  
+    
