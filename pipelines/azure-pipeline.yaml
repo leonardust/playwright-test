@@ -30,3 +30,7 @@ jobs:
                 failTaskOnFailedTests: false
                 testRunTitle: 'Sauce Demo E2E Tests'
               condition: succeededOrFailed()
+            - task: PublishAllureReport@1
+              displayName: 'Publish Allure Report'
+              inputs:
+                reportDir: 'allure-report'
