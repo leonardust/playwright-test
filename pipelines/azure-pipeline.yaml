@@ -33,8 +33,7 @@ jobs:
                 script: |
                   su -
                   apt-get update
-                  apt-add-repository ppa:qameta/allure -y
-                  apt-get install allure -y
+                  apt-get -y install allure
                   allure --version      
             - task: Bash@3
               displayName: 'Run Playwright tests'
