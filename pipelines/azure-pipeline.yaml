@@ -31,8 +31,8 @@ jobs:
               inputs:
                 targetType: 'inline'
                 script: |
-                  apt-get install sudo
-                  sudo apt-get update
+                  apt-get update
+                  apt-get install sudo -y
                   sudo apt-add-repository ppa:qameta/allure -y
                   sudo apt-get install allure -y
                   allure --version      
