@@ -29,6 +29,7 @@ const config: PlaywrightTestConfig = {
   ],
   reporter: [
     ['junit', { outputFile: '../junit-results/e2e-test-results.xml' }],
+    ['line'], ["allure-playwright"]
   ],
 }
 

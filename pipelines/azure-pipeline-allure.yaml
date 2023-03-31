@@ -1,0 +1,37 @@
+jobs:
+  - deployment: Run_E2E_Tests
+    pool:
+      vmImage: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:v1.32.0-focal
+    environment: testing
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+            - task: Bash@3
+              displayName: 'Run Playwright tests'
+              inputs:
+                workingDirectory: 'tests/e2e'
+                targetType: 'inline'
+                failOnStderr: true
+                env:
+                CI: true
+                script: |
+                  npm install
+                  npm run tests:allure
+                  npm run results:allure
+            - task: PublishTestResults@2
+              displayName: 'Publish test results'
+              inputs:
+                searchFolder: 'junit-results/'
+                testResultsFormat: 'JUnit'
+                testResultsFiles: 'e2e-test-results.xml'
+                mergeTestResults: true
+                failTaskOnFailedTests: false
+                testRunTitle: 'Sauce Demo E2E Tests'
+              condition: succeededOrFailed()
+            - task: PublishAllureReport@1
+              displayName: 'Publish Allure Report'
+              inputs:
+                reportDir: 'allure-report' 
